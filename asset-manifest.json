@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.460b4007.css",
-    "main.js": "/static/js/main.cc5404c0.js",
-    "demos.js": "/static/js/demos.d1bd939a.chunk.js",
+    "main.css": "/static/css/main.f73a76df.css",
+    "main.js": "/static/js/main.5a3bea8b.js",
+    "demos.js": "/static/js/demos.425b1b8b.chunk.js",
     "static/media/inter-latin-ext-wght-normal.woff2": "/static/media/inter-latin-ext-wght-normal.8bff79fbfaa8b8167a0b.woff2",
     "static/media/inter-latin-wght-normal.woff2": "/static/media/inter-latin-wght-normal.4f2981d82860061bca3e.woff2",
     "static/media/cormorant-garamond-latin-500-italic.woff": "/static/media/cormorant-garamond-latin-500-italic.cd343d42c0286150355d.woff",
@@ -24,13 +24,10 @@
     "static/media/manrope-greek-wght-normal.woff2": "/static/media/manrope-greek-wght-normal.539fb8477d7d315017b0.woff2",
     "static/media/manrope-vietnamese-wght-normal.woff2": "/static/media/manrope-vietnamese-wght-normal.4b711f5bb527c664e5be.woff2",
     "static/media/manrope-cyrillic-ext-wght-normal.woff2": "/static/media/manrope-cyrillic-ext-wght-normal.b554147c082021e7450d.woff2",
-    "index.html": "/index.html",
-    "main.460b4007.css.map": "/static/css/main.460b4007.css.map",
-    "main.cc5404c0.js.map": "/static/js/main.cc5404c0.js.map",
-    "demos.d1bd939a.chunk.js.map": "/static/js/demos.d1bd939a.chunk.js.map"
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.460b4007.css",
-    "static/js/main.cc5404c0.js"
+    "static/css/main.f73a76df.css",
+    "static/js/main.5a3bea8b.js"
   ]
 }
