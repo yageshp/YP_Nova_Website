@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.460b4007.css",
+    "main.js": "/static/js/main.cc5404c0.js",
+    "demos.js": "/static/js/demos.d1bd939a.chunk.js",
+    "static/media/inter-latin-ext-wght-normal.woff2": "/static/media/inter-latin-ext-wght-normal.8bff79fbfaa8b8167a0b.woff2",
+    "static/media/inter-latin-wght-normal.woff2": "/static/media/inter-latin-wght-normal.4f2981d82860061bca3e.woff2",
+    "static/media/cormorant-garamond-latin-500-italic.woff": "/static/media/cormorant-garamond-latin-500-italic.cd343d42c0286150355d.woff",
+    "static/media/cormorant-garamond-latin-600-italic.woff": "/static/media/cormorant-garamond-latin-600-italic.fc22a3c2c01c7df40db9.woff",
+    "static/media/inter-cyrillic-ext-wght-normal.woff2": "/static/media/inter-cyrillic-ext-wght-normal.b5cdd4765614e027c252.woff2",
+    "static/media/manrope-latin-wght-normal.woff2": "/static/media/manrope-latin-wght-normal.c5d858e9b56ba827c16c.woff2",
+    "static/media/cormorant-garamond-latin-500-italic.woff2": "/static/media/cormorant-garamond-latin-500-italic.f76399b72d8b2d6f7206.woff2",
+    "static/media/cormorant-garamond-latin-600-italic.woff2": "/static/media/cormorant-garamond-latin-600-italic.9424f1687e79d0860a88.woff2",
+    "static/media/inter-greek-wght-normal.woff2": "/static/media/inter-greek-wght-normal.4f908aee8194b11d9c35.woff2",
+    "static/media/inter-cyrillic-wght-normal.woff2": "/static/media/inter-cyrillic-wght-normal.49594fb515ba00213fc3.woff2",
+    "static/media/manrope-latin-ext-wght-normal.woff2": "/static/media/manrope-latin-ext-wght-normal.e46c8aa413216025354a.woff2",
+    "static/media/ibm-plex-mono-latin-500-normal.woff2": "/static/media/ibm-plex-mono-latin-500-normal.a1fc5384545ba0657d83.woff2",
+    "static/media/ibm-plex-mono-latin-400-normal.woff2": "/static/media/ibm-plex-mono-latin-400-normal.2b13cc93b07c41b27134.woff2",
+    "static/media/manrope-cyrillic-wght-normal.woff2": "/static/media/manrope-cyrillic-wght-normal.26b5a940f00e7e312270.woff2",
+    "static/media/ibm-plex-mono-latin-500-normal.woff": "/static/media/ibm-plex-mono-latin-500-normal.89a2903adc59285a5efa.woff",
+    "static/media/ibm-plex-mono-latin-400-normal.woff": "/static/media/ibm-plex-mono-latin-400-normal.12ede62e388083e7c01c.woff",
+    "static/media/inter-greek-ext-wght-normal.woff2": "/static/media/inter-greek-ext-wght-normal.f4df85d151e5ee39bc2b.woff2",
+    "static/media/inter-vietnamese-wght-normal.woff2": "/static/media/inter-vietnamese-wght-normal.ab4bb8dcda024fe6eff2.woff2",
+    "static/media/manrope-greek-wght-normal.woff2": "/static/media/manrope-greek-wght-normal.539fb8477d7d315017b0.woff2",
+    "static/media/manrope-vietnamese-wght-normal.woff2": "/static/media/manrope-vietnamese-wght-normal.4b711f5bb527c664e5be.woff2",
+    "static/media/manrope-cyrillic-ext-wght-normal.woff2": "/static/media/manrope-cyrillic-ext-wght-normal.b554147c082021e7450d.woff2",
+    "index.html": "/index.html",
+    "main.460b4007.css.map": "/static/css/main.460b4007.css.map",
+    "main.cc5404c0.js.map": "/static/js/main.cc5404c0.js.map",
+    "demos.d1bd939a.chunk.js.map": "/static/js/demos.d1bd939a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.460b4007.css",
+    "static/js/main.cc5404c0.js"
+  ]
+}
