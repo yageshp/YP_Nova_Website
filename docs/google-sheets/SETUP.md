@@ -19,6 +19,14 @@ Every enquiry is added as a row in your Google Sheet **and** emailed to you.
 **If you change the script later:** Deploy → Manage deployments → pencil icon → Version: **New version** → Deploy.
 The URL stays the same. (Choosing "New deployment" instead creates a different URL.)
 
+## Updating to version 3 (recommended)
+Version 3 opens the email link directly on the **Enquiries** tab, keeps that tab first, and formats the sheet (navy header, column widths,
+readable dates, wrapped messages, filter). Existing rows are moved into the new column order automatically.
+1. Open the sheet → **Extensions → Apps Script** → select all the old code → paste the whole of `Code.gs` (v3) → **Save**.
+2. **Deploy → Manage deployments → ✏️ → Version: New version → Deploy.** (Not "New deployment" — that would change the URL.)
+3. Optional: in the editor choose the function **formatNow** in the toolbar → **Run** to tidy the sheet straight away.
+4. You may delete the empty **Sheet1** tab (right-click → Delete) — enquiries are only written to **Enquiries**.
+
 **Phone alerts:** install the Gmail app for the notified address and enable notifications, or in the sheet
 use Tools → Notification settings.
 
