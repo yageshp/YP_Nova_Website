@@ -11,8 +11,8 @@ reviews.** Google penalises them, and they damage trust with customers.
       *Website designer* only if genuinely offered. Choose from Google's list.
 - [ ] **Phone:** `+91 82914 19044` · **Website:** `https://ypnova.com`
 - [ ] **Location:** if customers do not visit the office, set it as a *service-area business* and
-      hide the address. Add service areas: Mumbai, Navi Mumbai, Maharashtra (only where you genuinely
-      work).
+      hide the address. Add service area: India (international clients are served
+      remotely and mentioned in the description).
 - [ ] **Description** (750 characters max; plain and factual), for example: "YP Nova is the technology brand of YP
       Security Services Pvt. Ltd. We build custom business software, ERP modules, MIS and Power BI
       dashboards, business process automation and AI-assisted tools — including visitor management,

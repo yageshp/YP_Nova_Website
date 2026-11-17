@@ -19,7 +19,7 @@ export const servicePages = [
     eyebrow: 'Custom software development company in India',
     h1: ['Custom Software Development Services', 'for Growing Businesses'],
     intro:
-      'YP Nova is a software development company in India offering custom software services for growing businesses: custom business software development, custom web application development, enterprise software development and business application development — all shaped around how your organisation actually works. We work with businesses in Mumbai, Navi Mumbai, across Maharashtra and elsewhere in India.',
+      'YP Nova is a software development company in India offering custom software services for growing businesses: custom business software development, custom web application development, enterprise software development and business application development — all shaped around how your organisation actually works. We work with businesses across India and with international clients, delivering projects remotely.',
     experience: {
       delivered: [
         'A Management Information System that reads operational data through the Google Sheets API, with meter-reading reports and dashboards.',

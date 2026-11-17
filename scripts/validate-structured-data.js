@@ -15,7 +15,7 @@ const BUILD = path.join(ROOT, 'build');
 const SITE = 'https://ypnova.com';
 const EXPECT = {
   name: 'YP Nova', url: `${SITE}/`, email: 'info@ypnova.com', telephone: '+918291419044',
-  parent: 'YP Security Services Pvt. Ltd.', areaServed: ['Mumbai', 'Navi Mumbai', 'Maharashtra', 'India'],
+  parent: 'YP Security Services Pvt. Ltd.', areaServed: ['India', 'Worldwide'],
 };
 const FORBIDDEN = ['AggregateRating', 'Review', 'LocalBusiness', 'PostalAddress', 'Rating'];
 const FORBIDDEN_KEYS = ['aggregateRating', 'review', 'reviews', 'address', 'award', 'awards', 'hasCredential', 'numberOfEmployees', 'foundingDate'];

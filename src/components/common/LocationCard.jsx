@@ -12,19 +12,18 @@ import { seo } from '@/config/seo';
  */
 export function LocationCard() {
   const { mapsUrl, directionsUrl } = company.location;
-  const cities = seo.areaServed;
   return (
     <section aria-labelledby="service-area-h" className="card overflow-hidden" data-testid="location-card">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <div className="p-6 sm:p-8 md:p-10">
-          <p className="eyebrow mb-3">Service area &amp; meetings</p>
+          <p className="eyebrow mb-3">India &amp; international clients</p>
           <h2 id="service-area-h" className="h-section !text-[clamp(1.5rem,1.15rem+1.4vw,2.25rem)]">
-            We come to you — <span className="font-serif grad-text">by appointment</span>
+            Working with clients <span className="font-serif grad-text">everywhere</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink">
-            YP Nova does not operate a walk-in office. We work with businesses in {cities.slice(0, -2).join(', ')} and across{' '}
-            {cities[cities.length - 2]}, and with organisations elsewhere in {cities[cities.length - 1]} online. Meetings are arranged in
-            advance — at your premises, over a video call, or at a place we confirm with you when we schedule the meeting.
+            YP Nova works with clients across India and around the world. Projects are delivered remotely, so where your business is
+            located is never a barrier. We do not operate a walk-in office: meetings are arranged in advance — over a video call, at
+            your premises where practical, or at a place we confirm with you when we schedule the meeting.
           </p>
           <ul className="mt-6 flex flex-col gap-3 text-[15px] text-ink">
             <li className="flex items-start gap-3"><CalendarClock className="w-5 h-5 mt-0.5 shrink-0 text-brand" aria-hidden="true" /> <span>Call or WhatsApp <a href={company.phone.href} className="inline-block py-2 -my-2 font-semibold text-brand underline underline-offset-4">{company.phone.display}</a>, or email <a href={company.email.href} className="inline-block py-2 -my-2 font-semibold text-brand underline underline-offset-4">{company.email.address}</a>, to arrange a meeting.</span></li>

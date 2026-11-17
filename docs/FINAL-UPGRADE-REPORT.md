@@ -85,7 +85,7 @@ Date: 17 Nov 2026 · Site: https://ypnova.com · Builds on the live SEO release 
 6. **Apps Script v2** (optional) — adds the "Preferred contact" column and server-side spam filtering.
 7. **Client permission** to name Reliable Group, show their logo, or publish real screenshots. Until then the case study stays anonymised
    and uses only the illustrative demos.
-8. **Service areas** (Mumbai, Navi Mumbai, Maharashtra, India) — confirm they are accurate.
+8. ~~Service areas~~ — **done:** changed to "clients across India and worldwide" (17 Nov 2026).
 9. **GA4 Measurement ID** (optional). If you enable it, update the Privacy Policy *before* switching it on.
 10. **Real customer reviews/testimonials:** ask real clients, then add them via `verifiedTestimonials` only with written permission.
 11. **Content review** of the demo wording and the new service-page phrasing for accuracy.

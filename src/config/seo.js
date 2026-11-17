@@ -38,10 +38,14 @@ export const seo = {
   contentUpdated: '2026-11-17',
 
   /**
-   * Areas served — shown on the Contact page and in Organization schema (areaServed).
+   * Areas served — shown on the Contact page and in Organization / Service schema (areaServed).
+   * YP Nova works with clients across India and internationally, delivered remotely; there is no
+   * walk-in office and no city-specific service area.
    * These are SERVICE areas, not office locations. Confirm before relying on them.
    */
-  areaServed: ['Mumbai', 'Navi Mumbai', 'Maharashtra', 'India'],
+  areaServed: ['India', 'Worldwide'],
+  /** Human-readable form used on the website. */
+  areaServedText: 'Clients across India and worldwide',
 };
 
 export const absoluteUrl = (path = '/') => `${seo.siteUrl}${path === '/' ? '/' : path.replace(/\/+$/, '')}`;

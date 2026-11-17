@@ -69,7 +69,7 @@ export default function Contact() {
                 <InfoRow icon={WhatsAppIcon} label="WhatsApp" value={`Chat on ${company.phone.display}`} href={company.whatsapp.href} external testId="contact-whatsapp" />
                 <InfoRow icon={Mail} label="Email" value={company.email.address} href={company.email.href} testId="contact-email" />
                 <InfoRow icon={Globe} label="Website" value="ypnova.com" href={`${seo.siteUrl}/`} testId="contact-website" />
-                <InfoRow icon={MapPin} label="Service area" value="Mumbai · Navi Mumbai · Maharashtra · India" />
+                <InfoRow icon={Globe} label="Who we work with" value="Clients across India & worldwide" />
                 <InfoRow icon={MapPin} label="Meetings by appointment" value="Google Maps location" href={company.location.mapsUrl} external testId="contact-maps" />
                 {company.workingHours && <InfoRow icon={Clock} label="Working hours" value={company.workingHours} />}
               </div>

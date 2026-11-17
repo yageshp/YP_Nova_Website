@@ -7,7 +7,7 @@
 ## What is checked
 1. Exactly one JSON-LD block per indexable page; valid JSON; `@context` = https://schema.org.
 2. **Organization** on every page: name "YP Nova", url https://ypnova.com/, email info@ypnova.com, telephone +918291419044,
-   parent organisation "YP Security Services Pvt. Ltd.", logo file exists, areaServed = Mumbai, Navi Mumbai, Maharashtra, India, **no location / address**.
+   parent organisation "YP Security Services Pvt. Ltd.", logo file exists, areaServed = India, Worldwide, **no location / address**.
 3. **WebSite** node and publisher reference.
 4. **WebPage**: `@id`/url equal the canonical URL, name equals `<title>`, description equals the meta description.
 5. **BreadcrumbList**: sequential positions, last item = page URL, every crumb name visible on the page.

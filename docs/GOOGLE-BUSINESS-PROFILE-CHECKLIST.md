@@ -16,7 +16,8 @@ automatically improve rankings; a complete, accurate and active profile with gen
 YP Nova has no customer-facing office, so:
 - [ ] At https://business.google.com choose **"No"** when asked whether customers can visit a location (or later: *Business information →
       Location → Business location → remove/hide address*).
-- [ ] Add **service areas**: Mumbai, Navi Mumbai, Maharashtra — only places you genuinely serve (Google allows up to 20).
+- [ ] Add **service areas**: **India** (Google lets you choose a country/region). YP Nova also works with international clients remotely —
+      say so in the business description rather than adding foreign areas, since the profile is for local Google Maps visibility.
 - [ ] Google may still ask for a postal address **privately for verification**; it stays hidden from the public when the profile is a
       service-area business. Do not use the residential map pin as a public business address.
 - [ ] Do not create a second listing for the same business, and do not claim the existing "Green Meadows By Qualcon" place as YP Nova.

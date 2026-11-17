@@ -159,9 +159,9 @@ Each industry page targets "<industry> software" style searches with its own tit
 
 There are no separate city pages: near-identical location pages are low-value and risky. Local relevance comes from:
 
-- The Contact page "Areas we serve" section (Mumbai, Navi Mumbai, Maharashtra, India).
-- Organization schema: `areaServed`, phone, verified Maps place.
-- The service-page intros, which mention Mumbai, Navi Mumbai and Maharashtra naturally.
+- The Contact page wording: clients across India and worldwide, delivered remotely, meetings by appointment.
+- Organization schema: `areaServed` = India + Worldwide, phone, email.
+- "Software development company in India" in the custom software page title and intro.
 - A consistent **Google Business Profile** (the largest local ranking factor; see OFF-PAGE-SEO-CHECKLIST.md).
 
 If you later have a genuine office or delivery team in a specific city, a single, substantive page for that city can be added.

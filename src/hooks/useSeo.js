@@ -99,6 +99,9 @@ export function useSeo({ title, description, path = '/', breadcrumbs, jsonLd, pa
   }, [title, description, path, noindex, image, graphText]);
 }
 
+/** India as a Country, anything else ("Worldwide") as a Place. */
+const areaServedNodes = () => seo.areaServed.map((name) => (name === 'India' ? { '@type': 'Country', name } : { '@type': 'Place', name }));
+
 /** Organization entity — referenced by @id from every page. No address, ratings or reviews (none verified). */
 export function organizationNode() {
   const node = {
@@ -118,12 +121,10 @@ export function organizationNode() {
       contactType: 'sales',
       telephone: company.phone.e164,
       email: company.email.address,
-      areaServed: 'IN',
+      areaServed: 'Worldwide',
       availableLanguage: ['en', 'hi'],
     }],
-    areaServed: seo.areaServed.map((name) => (name === 'India'
-      ? { '@type': 'Country', name }
-      : { '@type': name === 'Maharashtra' ? 'State' : 'City', name })),
+    areaServed: areaServedNodes(),
     knowsAbout: [
       'Custom software development', 'Custom ERP development', 'Agentic AI and AI agents',
       'Business process automation', 'SaaS application development', 'MIS and Power BI dashboards',
@@ -155,7 +156,7 @@ export function serviceNode({ name, description, path, serviceType, audience }) 
     serviceType: serviceType || name,
     url: absoluteUrl(path),
     provider: { '@id': ORG_ID },
-    areaServed: { '@type': 'Country', name: 'India' },
+    areaServed: areaServedNodes(),
     ...(audience ? { audience: { '@type': 'BusinessAudience', name: audience } } : {}),
   };
 }

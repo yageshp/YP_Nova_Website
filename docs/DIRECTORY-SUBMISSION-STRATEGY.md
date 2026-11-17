@@ -15,7 +15,7 @@ sign-up page**, as plans change.
 | Phone | +91 82914 19044 |
 | Email | info@ypnova.com |
 | Website | https://ypnova.com |
-| Location | Service-area business — Mumbai, Navi Mumbai, Maharashtra, India. **No public street address** (no walk-in office). |
+| Location / service area | **India & international clients** (projects delivered remotely). **No public street address** (no walk-in office). |
 | Logo | `yp-nova-logo-512.png` (square) from the website files |
 
 ## Company descriptions
@@ -26,8 +26,8 @@ sign-up page**, as plans change.
 **Medium (≈500 characters — Google Business Profile, LinkedIn tagline/about, Justdial)**
 > YP Nova is a technology and software solutions company, the technology brand of YP Security Services Pvt. Ltd. We build custom software,
 > ERP applications, AI solutions, business automation and SaaS platforms — including management information systems, visitor management,
-> work permit and complaint management systems. We work with businesses across Mumbai, Navi Mumbai and Maharashtra, and with clients
-> elsewhere in India.
+> work permit and complaint management systems. We work with clients across India and
+> internationally, delivering projects remotely.
 
 **Long (Clutch, GoodFirms, DesignRush, LinkedIn "About")**
 > YP Nova is a technology and software solutions company specialising in custom software development, ERP applications, AI solutions,
