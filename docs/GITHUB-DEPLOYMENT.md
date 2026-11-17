@@ -8,7 +8,7 @@ you ask for a change ─► Claude edits + tests ─► push to `main`
                                             ▼
                        built site committed to the `deploy` branch
                                             │
-                       cPanel Git™ Version Control pulls `deploy` and runs .cpanel.yml
+                       MilesWeb GitHub deploy (Deploy on every push) pulls `deploy`
                                             ▼
                        files copied into public_html → https://ypnova.com updated
 ```
@@ -20,9 +20,34 @@ you ask for a change ─► Claude edits + tests ─► push to `main`
   any more — the next deployment would overwrite it. Ask for the change instead.
 - Every version is in Git history: any change can be inspected or rolled back.
 
-## One-time setup in MilesWeb cPanel
+## One-time setup in MilesWeb (the "GitHub" page in the MilesWeb panel)
 
-### A. Give the server read access to the private repository (deploy key)
+Repository: **https://github.com/yageshp/YP_Nova_Website** (public). The earlier AI Studio prototype is kept on the branch
+`archive/novaops-ai-studio-prototype`.
+
+MilesWeb panel → **GitHub** → *Repository & Deployment Settings* → **Configure GitHub deploy**:
+
+| Field | Value | Why |
+|---|---|---|
+| Repository | `YP_Nova_Website` | |
+| **Branch or tag** | **`deploy`** (not `main`) | `deploy` holds the finished, checked website. `main` is source code that must be built first. |
+| **Build script** | **leave empty** | The site is already built and checked by GitHub Actions; MilesWeb shared hosting cannot run the pre-rendering step. |
+| Deploy on every push | **On** | Every successful build updates `deploy`, which MilesWeb then deploys automatically. |
+
+Click **Update**, then trigger the first deployment (or push any change). Check https://ypnova.com afterwards — a hard refresh
+(Ctrl/Cmd + Shift + R) may be needed.
+
+If the `deploy` branch is not in the dropdown yet, wait for the first GitHub Actions run to finish (repository → **Actions** tab) and reopen
+the dialog.
+
+`.htaccess` blocks `/.git`, `/.cpanel.yml` and `/seo-lastmod.json` from being served, so placing the repository directly in `public_html` is safe.
+
+## Alternative: cPanel Git™ Version Control
+
+Only needed if you stop using MilesWeb's GitHub page.
+
+
+#### A. Give the server read access to the private repository (deploy key)
 1. cPanel → **SSH Access** → **Manage SSH Keys** → **Generate a New Key**: name `github_ypnova`, **no passphrase**, type RSA 4096 →
    Generate. Then **Manage → Authorize** the key.
 2. **View/Download** the *public* key (`github_ypnova.pub`) and copy it.
@@ -35,20 +60,20 @@ you ask for a change ─► Claude edits + tests ─► push to `main`
    ```
    (If MilesWeb's own "GitHub" connection already grants the server access to the repository, skip A.)
 
-### B. Create the cPanel repository (it must NOT be inside public_html)
+#### B. Create the cPanel repository (it must NOT be inside public_html)
 cPanel → **Git™ Version Control** → **Create** → turn **Clone a Repository** on:
-- **Clone URL:** `git@github.com:<github-user>/ypnova-website.git` (SSH form, for the deploy key)
-- **Repository Path:** `repositories/ypnova-website`
+- **Clone URL:** `https://github.com/yageshp/YP_Nova_Website.git` (public repository — the deploy key in step A is not needed) (SSH form, for the deploy key)
+- **Repository Path:** `repositories/yp_nova_website`
 - **Repository Name:** `ypnova-website` → **Create**.
 
 Then **Manage → Basic Information → Checked-Out Branch:** select **`deploy`** → Update.
 
-### C. First deployment
+#### C. First deployment
 **Manage → Pull or Deploy** → **Update from Remote** → **Deploy HEAD Commit**. cPanel runs `.cpanel.yml`, which copies the built site into
 `public_html` (`.htaccess` included; `.git` and `.cpanel.yml` are not copied; other files already on the server are left alone).
 Check https://ypnova.com afterwards.
 
-### D. Make every push deploy automatically (recommended)
+#### D. Make every push deploy automatically (recommended)
 cPanel does not pull from GitHub by itself. The Action can tell it to, using a cPanel API token:
 1. cPanel → **Security → Manage API Tokens** → **Create**: name `github-deploy` → copy the token (shown once).
 2. GitHub → repository **Settings → Secrets and variables → Actions → New repository secret** — add four secrets:
@@ -58,7 +83,7 @@ cPanel does not pull from GitHub by itself. The Action can tell it to, using a c
 | `CPANEL_HOST` | your cPanel server hostname — the part of your cPanel address before `:2083`, without `https://` |
 | `CPANEL_USER` | your cPanel username |
 | `CPANEL_TOKEN` | the API token from step 1 |
-| `CPANEL_REPO_PATH` | `/home/<cpanel-user>/repositories/ypnova-website` |
+| `CPANEL_REPO_PATH` | `/home/<cpanel-user>/repositories/yp_nova_website` |
 
 From then on each push to `main` builds, checks and publishes the site within a few minutes. Without the secrets the Action still builds
 and updates the `deploy` branch, and you click **Update from Remote → Deploy HEAD Commit** in cPanel (the Action's run page says so).
@@ -66,11 +91,6 @@ and updates the `deploy` branch, and you click **Update from Remote → Deploy H
 Treat the API token like a password: it is stored only as an encrypted GitHub secret, never in the code. Revoke it in cPanel (Manage API
 Tokens) to stop automatic deployment at any time. If GitHub's servers cannot reach your cPanel on port 2083 (some hosts firewall it), the
 deploy step fails with a connection error — ask MilesWeb support to allow it, or use the manual click.
-
-### If MilesWeb's GitHub option is a different tool
-If MilesWeb's panel offers its own GitHub connection where you choose a repository, a **branch** and a target folder, choose repository
-`ypnova-website`, branch **`deploy`**, folder **`public_html`**, and enable automatic deployment if offered — then step D is not needed.
-`.htaccess` blocks `/.git` and `/.cpanel.yml` from being served even if the repository is placed directly in `public_html`.
 
 ## Checking a deployment
 - GitHub → **Actions** tab: each run shows build, checks and deploy steps (green = live).

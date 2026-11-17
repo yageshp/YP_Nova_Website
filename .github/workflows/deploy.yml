@@ -16,17 +16,18 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.55 supports Chromium on Ubuntu 24.04 (ubuntu-latest moved to 26.04).
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       # true when the four cPanel secrets are set (Settings → Secrets and variables → Actions)
       CPANEL_CONFIGURED: ${{ secrets.CPANEL_HOST != '' && secrets.CPANEL_TOKEN != '' }}
     steps:
       - name: Check out main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
