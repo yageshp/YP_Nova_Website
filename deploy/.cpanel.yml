@@ -1,0 +1,11 @@
+# cPanel Git(TM) Version Control deployment for ypnova.com — lives on the generated `deploy` branch (do not edit there;
+# change `main` and let the GitHub Action rebuild). "Deploy HEAD Commit" runs these tasks as your cPanel user from the
+# repository folder: the built site is copied into public_html. Files on the server that are not part of the build are
+# left in place; the repository's own .git folder and this file are not copied (dot-files are skipped by the * glob,
+# so .htaccess is listed explicitly).
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH

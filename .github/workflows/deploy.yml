@@ -1,0 +1,107 @@
+name: Build, check and deploy ypnova.com
+
+# Every push to main: build + pre-render + SEO/structured-data checks. Only if everything passes, the built site is committed to
+# the `deploy` branch, and (when the cPanel secrets are configured) MilesWeb is told to pull that branch and publish it.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      # true when the four cPanel secrets are set (Settings → Secrets and variables → Actions)
+      CPANEL_CONFIGURED: ${{ secrets.CPANEL_HOST != '' && secrets.CPANEL_TOKEN != '' }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install headless Chromium for pre-rendering
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Build, pre-render and validate (fails on broken links, duplicate SEO tags or invalid structured data)
+        run: npm run build
+        env:
+          CI: 'true'
+
+      - name: Publish build to the deploy branch
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SRC_SHA=$(git rev-parse --short HEAD)
+          rm -rf /tmp/deploy && mkdir -p /tmp/deploy
+          cp -a build/. /tmp/deploy/
+          cp deploy/.cpanel.yml /tmp/deploy/
+          cd /tmp/deploy
+          git init -q -b deploy
+          git config user.name "ypnova-deploy-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
+          if git fetch -q --depth=1 origin deploy; then
+            git reset -q --soft FETCH_HEAD
+          fi
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Build output unchanged — nothing to deploy."
+            echo "CHANGED=false" >> "$GITHUB_ENV"
+          else
+            git commit -q -m "Deploy ${SRC_SHA}: ${COMMIT_MSG%%$'\n'*}"
+            git push -q origin HEAD:deploy
+            echo "CHANGED=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Keep sitemap lastmod history on main (non-fatal)
+        run: |
+          if ! git diff --quiet -- seo-lastmod.json; then
+            git config user.name "ypnova-deploy-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add seo-lastmod.json
+            git commit -m "chore: update sitemap lastmod fingerprints [skip ci]"
+            git push origin HEAD:main || echo "::warning::Could not save seo-lastmod.json to main (main moved); it will be saved on the next run."
+          fi
+
+      - name: Tell MilesWeb (cPanel) to pull and publish the deploy branch
+        if: env.CHANGED == 'true' && env.CPANEL_CONFIGURED == 'true'
+        env:
+          CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
+          CPANEL_USER: ${{ secrets.CPANEL_USER }}
+          CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
+          CPANEL_REPO_PATH: ${{ secrets.CPANEL_REPO_PATH }}
+        run: |
+          api() {
+            curl -sS --fail-with-body -H "Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}" \
+              "https://${CPANEL_HOST}:2083/execute/$1" --data-urlencode "repository_root=${CPANEL_REPO_PATH}" "${@:2}"
+          }
+          echo "Pulling deploy branch on the server…"
+          api VersionControl/update --data-urlencode "branch=deploy" | tee /tmp/update.json
+          grep -q '"status":1' /tmp/update.json
+          echo "Running .cpanel.yml deployment…"
+          api VersionControlDeployment/create | tee /tmp/deploy.json
+          grep -q '"status":1' /tmp/deploy.json
+
+      - name: Deployment needs a manual click
+        if: env.CHANGED == 'true' && env.CPANEL_CONFIGURED != 'true'
+        run: |
+          echo "::notice::The deploy branch is updated. cPanel secrets are not set, so publish it in cPanel → Git Version Control → Manage → Pull or Deploy → 'Update from Remote' then 'Deploy HEAD Commit'."

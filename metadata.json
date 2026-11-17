@@ -1,8 +1,0 @@
-{
-  "name": "Viktor Oddy Studio",
-  "description": "A single-page landing page for a creative design studio with custom animations, parallax scrolling, infinite marquees, and a custom interactive CTA element.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

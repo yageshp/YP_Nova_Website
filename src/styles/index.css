@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   YP Nova design system
+   Fonts are loaded in public/index.html (Manrope, Inter, Cormorant Garamond
+   Italic, IBM Plex Mono). Colour tokens mirror tailwind.config.js.
+   ========================================================================== */
+:root {
+  --navy: #10172d;
+  --brand: #6028d7;
+  --purple: #7c3aed;
+  --soft: #a78bfa;
+  --lavender: #f2ecff;
+  --ice: #eaf8ff;
+  --ink: #182033;
+  --muted: #5b697f;
+  --line: #eceaf2;
+
+  --grad-button: linear-gradient(135deg, #6028d7 0%, #7c3aed 100%);
+  --grad-text: linear-gradient(95deg, #10172d 0%, #6028d7 55%, #7c3aed 100%);
+  --grad-soft: linear-gradient(120deg, #ffffff, #f7f2ff, #f0faff);
+  --header-h: 68px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Manrope Variable', 'Manrope', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    color: var(--navy);
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  img, svg, iframe { max-width: 100%; }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection { background: rgba(124, 58, 237, 0.18); }
+}
+
+@layer components {
+  /* Fluid type scale (hero 34→72, section 28→46) */
+  .h-hero { font-size: clamp(2.125rem, 1.1rem + 4.6vw, 4.25rem); line-height: 1.06; font-weight: 700; letter-spacing: -0.032em; }
+  .h-page { font-size: clamp(2rem, 1.2rem + 3.4vw, 3.5rem); line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; }
+  .h-section { font-size: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem); line-height: 1.14; font-weight: 700; letter-spacing: -0.026em; }
+  .h-card { font-size: 1.25rem; line-height: 1.3; font-weight: 700; letter-spacing: -0.015em; }
+  .lead { font-size: clamp(1rem, 0.96rem + 0.25vw, 1.125rem); line-height: 1.7; color: var(--muted); }
+
+  /* Small technical label */
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 1px 2px rgba(16, 23, 45, 0.04), 0 6px 20px rgba(16, 23, 45, 0.05);
+  }
+  .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 58, 237, 0.32);
+    box-shadow: 0 2px 4px rgba(16, 23, 45, 0.04), 0 16px 40px rgba(96, 40, 215, 0.14);
+  }
+
+  .field {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.7rem 0.95rem;
+    border-radius: 14px;
+    border: 1px solid #d9d5e6;
+    background: #fff;
+    color: var(--ink);
+    font-size: 1rem; /* 16px prevents iOS zoom on focus */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field::placeholder { color: #94a0b4; }
+  .field:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.14); }
+  .field[aria-invalid='true'] { border-color: #c81e3a; }
+  .field[aria-invalid='true']:focus { box-shadow: 0 0 0 4px rgba(200, 30, 58, 0.12); }
+}
+
+/* Elegant italic accent — used sparingly inside headings */
+.font-serif {
+  font-family: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.12em;
+  letter-spacing: -0.012em;
+  line-height: 1;
+}
+.font-mono { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+.font-display { font-family: 'Manrope Variable', 'Manrope', 'Inter Variable', ui-sans-serif, system-ui, sans-serif; }
+
+.grad-button { background-image: var(--grad-button); }
+.grad-icon { background-image: linear-gradient(135deg, #10172d 0%, #6028d7 70%, #7c3aed 100%); }
+.grad-soft { background-image: var(--grad-soft); }
+.grad-text {
+  background-image: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* italic glyphs overhang their box; keep the last letter from clipping */
+  padding-right: 0.08em;
+}
+
+/* Subtle dotted grid + ambient glow (hero / CTA only) */
+.tech-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.13) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+.violet-glow { background: radial-gradient(60% 60% at 50% 40%, rgba(124, 58, 237, 0.13) 0%, transparent 70%); }
+
+/* ==========================================================================
+   Custom YP Nova cursor (fine pointers only — see components/animations/CustomCursor.jsx)
+   The native cursor is hidden ONLY while html.has-custom-cursor is set by the
+   running component, so it always remains as a fallback.
+   ========================================================================== */
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role='button'],
+html.has-custom-cursor label,
+html.has-custom-cursor select,
+html.has-custom-cursor summary { cursor: none; }
+/* keep the native text caret/I-beam where people type or select a map */
+html.has-custom-cursor input,
+html.has-custom-cursor textarea { cursor: text; }
+html.has-custom-cursor iframe { cursor: auto; }
+
+.cursor-layer { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; will-change: transform; opacity: 0; transition: opacity 0.25s ease; }
+.cursor-layer.is-visible { opacity: 1; }
+.cursor-layer > span { position: absolute; left: 0; top: 0; display: block; border-radius: 9999px; transform: translate(-50%, -50%); }
+
+.cursor-ring > span {
+  width: 26px; height: 26px;
+  border: 1.5px solid rgba(96, 40, 215, 0.85);
+  background: rgba(124, 58, 237, 0);
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.45);
+  transition: width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.28s ease, border-color 0.28s ease;
+}
+.cursor-dot > span { width: 5px; height: 5px; background: #6028d7; transition: transform 0.2s ease, opacity 0.2s ease; }
+.cursor-trail > span {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(167, 139, 250, 0.38);
+  transition: width 0.35s ease, height 0.35s ease, opacity 0.35s ease;
+}
+.cursor-ring.is-hover > span { width: 40px; height: 40px; background: rgba(124, 58, 237, 0.12); border-color: rgba(124, 58, 237, 0.9); }
+.cursor-trail.is-hover > span { width: 54px; height: 54px; opacity: 0.6; }
+.cursor-ring.is-down > span { width: 20px; height: 20px; }
+.cursor-layer.is-text { opacity: 0 !important; }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-layer { display: none !important; }
+}
+
+/* ==========================================================================
+   Animations (kept from the original site, refined)
+   ========================================================================== */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(22px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; opacity: 0; }
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+.animate-pulse-glow { animation: pulseGlow 5s ease-in-out infinite; }
+
+@keyframes sparkDraw { to { stroke-dashoffset: 0; } }
+
+/* Opened from pre-rendered HTML: content is already on screen, so the first view does not replay
+   entrance animations (avoids a flash and a late LCP). Removed on the first client navigation. */
+html.boot-static .animate-fade-in-up { animation: none; opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-fade-in-up { opacity: 1; animation: none; }
+}
+
+/* Screen-reader helper for skip link */
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 10px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }

@@ -1,8 +1,8 @@
-node_modules/
-build/
-dist/
-coverage/
+node_modules
+build
+.env
+.env.local
+prerender-report.json
+docs/URL-VALIDATION-REPORT-local.md
 .DS_Store
-*.log
-.env*
-!.env.example
+backup/
