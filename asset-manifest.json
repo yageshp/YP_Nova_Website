@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f73a76df.css",
-    "main.js": "/static/js/main.5a3bea8b.js",
+    "main.js": "/static/js/main.ac5a3761.js",
     "demos.js": "/static/js/demos.425b1b8b.chunk.js",
     "static/media/inter-latin-ext-wght-normal.woff2": "/static/media/inter-latin-ext-wght-normal.8bff79fbfaa8b8167a0b.woff2",
     "static/media/inter-latin-wght-normal.woff2": "/static/media/inter-latin-wght-normal.4f2981d82860061bca3e.woff2",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.f73a76df.css",
-    "static/js/main.5a3bea8b.js"
+    "static/js/main.ac5a3761.js"
   ]
 }
