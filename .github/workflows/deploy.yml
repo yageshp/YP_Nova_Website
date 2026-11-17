@@ -44,6 +44,8 @@ jobs:
         run: npm run build
         env:
           CI: 'true'
+          # .env is not in the repository; keep source maps out of the public build.
+          GENERATE_SOURCEMAP: 'false'
 
       - name: Publish build to the deploy branch
         env:
@@ -105,4 +107,4 @@ jobs:
       - name: Deployment needs a manual click
         if: env.CHANGED == 'true' && env.CPANEL_CONFIGURED != 'true'
         run: |
-          echo "::notice::The deploy branch is updated. cPanel secrets are not set, so publish it in cPanel → Git Version Control → Manage → Pull or Deploy → 'Update from Remote' then 'Deploy HEAD Commit'."
+          echo "::notice::The deploy branch is updated. With MilesWeb's GitHub deploy (branch 'deploy', Deploy on every push) the website updates automatically. If you use cPanel Git Version Control instead, click 'Update from Remote' then 'Deploy HEAD Commit'."
