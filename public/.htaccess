@@ -14,6 +14,7 @@ ErrorDocument 404 /404.html
 RedirectMatch 404 (^|/)\.git(/|$)
 RedirectMatch 404 (^|/)\.cpanel\.yml$
 RedirectMatch 404 (^|/)seo-lastmod\.json$
+RedirectMatch 404 (^|/)milesweb-deploy\.sh$
 
 AddType image/webp .webp
 AddType font/woff2 .woff2

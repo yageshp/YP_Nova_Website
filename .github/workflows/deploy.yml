@@ -56,7 +56,7 @@ jobs:
           SRC_SHA=$(git rev-parse --short HEAD)
           rm -rf /tmp/deploy && mkdir -p /tmp/deploy
           cp -a build/. /tmp/deploy/
-          cp deploy/.cpanel.yml /tmp/deploy/
+          cp deploy/.cpanel.yml deploy/milesweb-deploy.sh /tmp/deploy/
           cd /tmp/deploy
           git init -q -b deploy
           git config user.name "ypnova-deploy-bot"
